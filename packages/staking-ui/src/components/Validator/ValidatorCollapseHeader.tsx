@@ -1,5 +1,5 @@
 import { IValidator } from "@ankr.com/bas-javascript-sdk";
-import { Col, Collapse, Row, Tooltip } from "antd";
+import { Col, Row, Tooltip } from "antd";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { useBasStore } from "src/stores";
@@ -41,7 +41,7 @@ const ValidatorCollapseHeader = observer(
     /* -------------------------------------------------------------------------- */
     useEffect(() => {
       inital();
-    }, [store.walletAccount]);
+    }, [store.isConnected]);
 
     /* -------------------------------------------------------------------------- */
     /*                                    DOMS                                    */

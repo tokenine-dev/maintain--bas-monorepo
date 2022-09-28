@@ -59,7 +59,7 @@ const Staking = observer(() => {
     return () => {
       setIsLoading(true);
     };
-  }, [store.walletAccount]);
+  }, [store.isConnected]);
 
   /* -------------------------------------------------------------------------- */
   /*                                    DOMS                                    */
