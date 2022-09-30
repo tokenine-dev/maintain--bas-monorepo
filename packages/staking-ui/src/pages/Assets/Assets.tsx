@@ -43,8 +43,16 @@ const Assets = observer(() => {
   /*                                   Watches                                  */
   /* -------------------------------------------------------------------------- */
   useEffect(() => {
+    if (!store.walletAccount) return;
     inital();
-  }, [store.isConnected]);
+  }, [store.walletAccount]);
+
+  // timeout --> show empty msg or data
+  useEffect(() => {
+    setTimeout(() => {
+      if (loading) setLoading(false);
+    }, 7000);
+  }, [loading]);
 
   /* -------------------------------------------------------------------------- */
   /*                                    DOMS                                    */
@@ -73,7 +81,7 @@ const Assets = observer(() => {
           </b>
         </div>
         <div className="card-body" id="view-point3">
-          <StakingHistory data={stakingHistory} />
+          <StakingHistory data={stakingHistory} loading={loading} />
         </div>
       </div>
     </div>
