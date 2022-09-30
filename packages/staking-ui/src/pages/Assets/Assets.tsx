@@ -1,4 +1,8 @@
-import { ClockCircleOutlined, WalletOutlined } from "@ant-design/icons";
+import {
+  ClockCircleOutlined,
+  LoadingOutlined,
+  WalletOutlined,
+} from "@ant-design/icons";
 import "./Assets.css";
 import MyValidators from "src/components/MyValidators/MyValidators";
 import StakingHistory from "src/components/StakingHistory/StakingHistory";
@@ -80,7 +84,7 @@ const Assets = observer(() => {
         <div className="content-card">
           <div className="card-title">
             <b>
-              <span>Total Staking</span>
+              <span>Your total staking</span>
             </b>
           </div>
           <div className="card-body">
@@ -92,23 +96,33 @@ const Assets = observer(() => {
                 textAlign: "center",
                 fontSize: "1.5rem",
                 fontWeight: "bold",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
+                height: "70px",
               }}
             >
-              {totalStaked.toLocaleString(undefined, {
-                minimumFractionDigits: 3,
-                maximumFractionDigits: 3,
-              })}
-              <JfinCoin />
+              {loading ? (
+                <LoadingOutlined spin />
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {totalStaked.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                  <JfinCoin />
+                </div>
+              )}
             </div>
           </div>
         </div>
         <div className="content-card">
           <div className="card-title">
             <b>
-              <span>Total Reward</span>
+              <span>Your total reward</span>
             </b>
           </div>
           <div className="card-body">
@@ -124,11 +138,23 @@ const Assets = observer(() => {
                 alignItems: "center",
               }}
             >
-              {totalReward.toLocaleString(undefined, {
-                minimumFractionDigits: 3,
-                maximumFractionDigits: 3,
-              })}
-              <JfinCoin />
+              {loading ? (
+                <LoadingOutlined spin />
+              ) : (
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  {totalReward.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                  <JfinCoin />
+                </div>
+              )}
             </div>
           </div>
         </div>
