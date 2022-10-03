@@ -218,7 +218,6 @@ export class BasStore {
     if (!this.walletAccount) {
       await this.sdk.connect();
       await this.updateKeyProvider(await this.getBasSdk().getKeyProvider());
-      await this.fetchChainInfo();
       this.walletAccount = this.provider?.accounts;
       this.walletBalance =
         (await this.provider?.getMyBalance()) || Number(0).toFixed(5);
@@ -229,6 +228,7 @@ export class BasStore {
   @action
   public async connectProvider() {
     await this.sdk.connectProvider();
+    await this.fetchChainInfo();
     this.isConnected = true;
     await this.connectFromInjected();
   }
