@@ -25,7 +25,7 @@ export const VALIDATOR_WALLETS: Record<string, {name: string, image: string}> = 
         image: tokenine
     },
     "0xe8391988483355e6a8170AC10f5726D4868e5C68": {
-        name: "IAM",
+        name: "I AM",
         image: iam
     },
     "0x6DE767908d0d792385200E30d66A5696B24f709c": {
