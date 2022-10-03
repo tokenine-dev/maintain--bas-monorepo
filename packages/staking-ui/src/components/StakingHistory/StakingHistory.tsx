@@ -7,6 +7,7 @@ import { getCurrentEnv, useBasStore } from "src/stores";
 
 interface IStakingHistory {
   data: IMyTransactionHistory[] | undefined;
+  loading: boolean;
 }
 
 interface IStakingHistoryColumn {
@@ -14,10 +15,11 @@ interface IStakingHistoryColumn {
   amount: number;
 }
 
-const StakingHistory = observer(({ data }: IStakingHistory) => {
+const StakingHistory = observer(({ data, loading }: IStakingHistory) => {
   /* -------------------------------------------------------------------------- */
   /*                                   States                                   */
   /* -------------------------------------------------------------------------- */
+
   const store = useBasStore();
   const columns: ColumnProps<IStakingHistoryColumn>[] = [
     {
@@ -148,7 +150,7 @@ const StakingHistory = observer(({ data }: IStakingHistory) => {
     <div className="staking-history-container">
       <Table
         columns={columns}
-        loading={!data}
+        loading={loading}
         dataSource={data}
         pagination={{ size: "small" }}
         scroll={{ x: true }}
