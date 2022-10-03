@@ -168,6 +168,11 @@ export class BasStore {
     this.provider = provider;
   }
 
+  async updateWalletBalance() {
+    this.walletBalance =
+      (await this.provider?.getMyBalance()) || Number(0).toFixed(5);
+  }
+
   @action
   public async listenAccountChange(): Promise<void> {
     window.ethereum?.on("accountsChanged", async () => {

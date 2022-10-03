@@ -48,6 +48,7 @@ const AddStakingContent = observer((props: IAddStakingContent) => {
       if (props.onSuccess) props.onSuccess();
       modalStore.setIsLoading(false);
       modalStore.setVisible(false);
+      store.updateWalletBalance();
       message.success("Staking was done!");
     } catch (err: any) {
       modalStore.setIsLoading(false);
