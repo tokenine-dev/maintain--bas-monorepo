@@ -21,7 +21,7 @@ const Staking = observer(() => {
   /* -------------------------------------------------------------------------- */
   /*                                   Methods                                  */
   /* -------------------------------------------------------------------------- */
-  const getValidators = async () => {
+  const inital = async () => {
     const currentValidators = await store
       .getBasSdk()
       .getStaking()
@@ -42,7 +42,7 @@ const Staking = observer(() => {
 
   const handleRefresh = async () => {
     setIsLoading(true);
-    getValidators();
+    inital();
     setIsLoading(false);
   };
 
@@ -52,14 +52,14 @@ const Staking = observer(() => {
   useEffect(() => {
     // if (!store.isConnected) setIsLoading(true);
     if (store.isConnected) {
-      getValidators();
+      inital();
     }
 
     // on unmounted
     return () => {
       setIsLoading(true);
     };
-  }, [store.walletAccount]);
+  }, [store.isConnected]);
 
   /* -------------------------------------------------------------------------- */
   /*                                    DOMS                                    */

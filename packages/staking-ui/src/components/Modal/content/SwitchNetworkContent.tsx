@@ -58,15 +58,16 @@ const SwitchNetworkContent = observer(() => {
           value.
           <hr />
           <div>
-            <span className="cols-title">Network:</span>JFIN Chain
+            <span className="cols-title">Network:</span>
+            {getConfig().chainName}
           </div>
           <div>
             <span className="cols-title">RPC URL:</span>
-            https://rpc.jfinchain.com/
+            {getConfig().rpcUrl}
           </div>
           <div>
             <span className="cols-title">Chain ID:</span>
-            3501
+            {getConfig().chainId}
           </div>
           <div>
             <span className="cols-title">Symbol</span>
@@ -74,7 +75,7 @@ const SwitchNetworkContent = observer(() => {
           </div>
           <div>
             <span className="cols-title">Explorer URL:</span>
-            https://exp.jfinchain.com/
+            {getConfig().explorerConfig?.homePage}
           </div>
         </div>
       </div>
