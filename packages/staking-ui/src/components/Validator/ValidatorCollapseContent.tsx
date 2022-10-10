@@ -5,7 +5,7 @@ import {
   PlusOutlined,
   WalletOutlined,
 } from "@ant-design/icons";
-import { Button, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import BigNumber from "bignumber.js";
 import { observer } from "mobx-react";
 import { useEffect, useState } from "react";
@@ -110,7 +110,7 @@ const ValidatorCollapseContent = observer(
     /* -------------------------------------------------------------------------- */
     useEffect(() => {
       inital();
-    }, [store.walletAccount]);
+    }, [store.isConnected]);
 
     /* -------------------------------------------------------------------------- */
     /*                                    DOMS                                    */
