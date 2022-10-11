@@ -1,15 +1,13 @@
-import { IChainConfig, IChainParams } from "@ankr.com/bas-javascript-sdk";
 import { CopyOutlined } from "@ant-design/icons";
 import { Table } from "antd";
-import { ColumnProps, ColumnsType } from "antd/lib/table";
+import { ColumnProps } from "antd/lib/table";
 import { observer } from "mobx-react";
-import prettyTime from "pretty-time";
-import { useCallback, useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { getCurrentEnv, useBasStore } from "src/stores";
 
 interface IStakingHistory {
   data: IMyTransactionHistory[] | undefined;
+  loading: boolean;
 }
 
 interface IStakingHistoryColumn {
@@ -17,10 +15,11 @@ interface IStakingHistoryColumn {
   amount: number;
 }
 
-const StakingHistory = observer(({ data }: IStakingHistory) => {
+const StakingHistory = observer(({ data, loading }: IStakingHistory) => {
   /* -------------------------------------------------------------------------- */
   /*                                   States                                   */
   /* -------------------------------------------------------------------------- */
+
   const store = useBasStore();
   const columns: ColumnProps<IStakingHistoryColumn>[] = [
     {
@@ -151,7 +150,7 @@ const StakingHistory = observer(({ data }: IStakingHistory) => {
     <div className="staking-history-container">
       <Table
         columns={columns}
-        loading={!data}
+        loading={loading}
         dataSource={data}
         pagination={{ size: "small" }}
         scroll={{ x: true }}
