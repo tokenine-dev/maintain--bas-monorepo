@@ -39,7 +39,7 @@ export const VALIDATOR_WALLETS: Record<string, {name: string, image: string}> = 
         image: jmb
     },
     "0xA46f2a9761B4FE539F50df64aD7089Ad446E96d6": {
-        name: "BNB",
+        name: "B&B",
         image: bnb,
     }
 }
