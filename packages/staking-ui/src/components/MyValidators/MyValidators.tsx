@@ -1,12 +1,9 @@
 /* eslint-disable no-nested-ternary */
-import { IValidator } from "@ankr.com/bas-javascript-sdk";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Col, Collapse, Row } from "antd";
 import { observer } from "mobx-react";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IMyValidators } from "src/pages/Assets/Assets";
-import { useBasStore } from "src/stores";
 import ValidatorCollapseContent from "../Validator/ValidatorCollapseContent";
 import ValidatorCollapseHeader from "../Validator/ValidatorCollapseHeader";
 import "../Validator/Validators.css";
@@ -67,9 +64,9 @@ const MyValidators = observer(
     return (
       <div className="my-validators-container">
         <Collapse ghost bordered={false}>
-          {!validators || loading
+          {loading
             ? loadingValidator
-            : !validators.length
+            : !validators || !validators.length
             ? emptyValidator
             : validators.map((v, index) => (
                 <Panel

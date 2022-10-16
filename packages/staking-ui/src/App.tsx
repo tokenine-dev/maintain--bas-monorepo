@@ -1,49 +1,17 @@
 import { observer } from "mobx-react";
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import CookieConsent from "react-cookie-consent";
 import { Route, Switch } from "react-router-dom";
 import Navbar from "src/components/Navbar/Navbar";
 import BlockInfo from "./components/BlockInfo/BlockInfo";
 import Conditions from "./components/Conditions";
-import SwitchNetworkContent from "./components/Modal/content/SwitchNetworkContent";
 import GlobalModal from "./components/Modal/GlobalModal";
-import { useBasStore, useModalStore } from "./stores";
 
 const Staking = React.lazy(() => import("./pages/Staking/Staking"));
 const Governance = React.lazy(() => import("./pages/Governance"));
 const Assets = React.lazy(() => import("./pages/Assets/Assets"));
 
 const Main = observer(() => {
-  /* -------------------------------------------------------------------------- */
-  /*                                   States                                   */
-  /* -------------------------------------------------------------------------- */
-  const store = useBasStore();
-  const modalStore = useModalStore();
-  /* -------------------------------------------------------------------------- */
-  /*                                   Methods                                  */
-  /* -------------------------------------------------------------------------- */
-  const inital = async () => {
-    const remoteChainId = await store
-      .getBasSdk()
-      .getKeyProvider()
-      ?.web3?.eth.getChainId();
-    const currentChainId = window?.ethereum?.networkVersion;
-
-    if (`${remoteChainId}` !== `${currentChainId}` && remoteChainId) {
-      modalStore.setTitle("Switch Network");
-      modalStore.setContent(<SwitchNetworkContent />);
-      modalStore.setVisible(true);
-    } else {
-      modalStore.setVisible(false);
-    }
-  };
-  /* -------------------------------------------------------------------------- */
-  /*                                   Watches                                  */
-  /* -------------------------------------------------------------------------- */
-  useEffect(() => {
-    inital();
-  }, [store.isConnected]);
-
   /* -------------------------------------------------------------------------- */
   /*                                    DOMS                                    */
   /* -------------------------------------------------------------------------- */

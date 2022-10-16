@@ -3,6 +3,8 @@ import tbwg from '../assets/images/partners/tbwg.png';
 import tokenine from '../assets/images/partners/tokenine.png';
 import iam from '../assets/images/partners/iam.png';
 import jet from '../assets/images/partners/jet.png';
+import jmb from '../assets/images/partners/jmb.png'
+import bnb from '../assets/images/partners/bnb.png'
 // import unknow from '../assets/images/partners/default.png';
 import BigNumber from 'bignumber.js';
 
@@ -25,11 +27,19 @@ export const VALIDATOR_WALLETS: Record<string, {name: string, image: string}> = 
         image: tokenine
     },
     "0xe8391988483355e6a8170AC10f5726D4868e5C68": {
-        name: "IAM",
+        name: "I AM",
         image: iam
     },
     "0x6DE767908d0d792385200E30d66A5696B24f709c": {
         name: "JET",
         image: jet
     },
+    "0x78BBA445e1C15E5206adcD671500C7Fa63384A36": {
+        name: "JMB",
+        image: jmb
+    },
+    "0xA46f2a9761B4FE539F50df64aD7089Ad446E96d6": {
+        name: "B&B",
+        image: bnb,
+    }
 }
